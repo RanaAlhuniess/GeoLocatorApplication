@@ -12,7 +12,6 @@ export class AddressController extends BaseHttpController {
 
     @httpPost('/search', validateBody(SearchRequestDto))
     search(@requestBody() dto: SearchRequestDto) {
-        console.log('----')
         return this.addressService.search(dto);
     }
 }
