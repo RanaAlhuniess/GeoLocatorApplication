@@ -9,7 +9,7 @@ export class AddressService {
     constructor(@inject(IGeolocationService) private readonly geolocationService: IGeolocationService, @inject(AddressRepository) private readonly addressRepository: AddressRepository,) {
     }
 
-    async search(dto: SearchRequestDto): AddressEntity {
+    async search(dto: SearchRequestDto): Promise<AddressEntity> {
         const existingAddress = await this.addressRepository.getByAddress(dto.address);
         if (existingAddress) {
             return existingAddress;
