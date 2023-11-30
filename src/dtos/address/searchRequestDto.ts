@@ -1,4 +1,4 @@
-import {IsEmail, IsNotEmpty, IsString,} from 'class-validator';
+import {IsBoolean, IsEmail, IsNotEmpty, IsString,} from 'class-validator';
 
 export class SearchRequestDto {
     @IsString()
@@ -9,4 +9,6 @@ export class SearchRequestDto {
     @IsNotEmpty()
     email: string = '';
 
+    @IsBoolean()
+    sendEmail: boolean = false;
 }

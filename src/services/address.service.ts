@@ -17,7 +17,7 @@ export class AddressService {
     async search(dto: SearchRequestDto): Promise<AddressEntity> {
         try {
             const address = await this.getByAddress(dto);
-            this.sendLocationEmail(dto.email, address);
+            if (dto.sendEmail) this.sendLocationEmail(dto.email, address);
             return {...address};
         } catch (e) {
             new Logger().error(`Error occurred while getting address ${e.message}`)
