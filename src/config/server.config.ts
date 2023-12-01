@@ -1,7 +1,16 @@
 import {Application, json, NextFunction, Request, Response, urlencoded} from "express";
 import {BaseException, InternalServerException} from "./exception.config";
+import cors from 'cors';
 
 export async function serverConfig(app: Application) {
+    //TODO: refactoring
+    const allowedOrigins = ['http://localhost:3000'];
+
+    const options: cors.CorsOptions = {
+        origin: allowedOrigins
+    };
+
+    app.use(cors(options));
     app.use(urlencoded({
         extended: true,
     }));
